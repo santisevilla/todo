@@ -17,7 +17,7 @@ const saveTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
   const { _id, text } = req.body;
   todoModel
-    .findByIdAndUpdate({ text })
+    .findByIdAndUpdate(_id, { text })
     .then(() => res.send("Updated Successfully"))
     .catch((err) => console.log(err));
 };
