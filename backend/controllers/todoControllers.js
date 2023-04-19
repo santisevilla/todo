@@ -1,7 +1,7 @@
 const todoModel = require("../models/todoModel.js");
 
 const getTodo = async (req, res) => {
-  const todo = await todoModel.find();
+  const todo = await todoModel.find({});
   res.send(todo);
 };
 
@@ -14,7 +14,25 @@ const saveTodo = async (req, res) => {
   });
 };
 
+const updateTodo = async (req, res) => {
+  const { _id, text } = req.body;
+  todoModel
+    .findByIdAndUpdate({ text })
+    .then(() => res.send("Updated Successfully"))
+    .catch((err) => console.log(err));
+};
+
+const deleteTodo = async (req, res) => {
+  const { id } = req.params;
+  todoModel
+    .findByIdAndDelete(id)
+    .then(() => res.send("Delete Successfully"))
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
-    getTodo,
-    saveTodo
+  getTodo,
+  saveTodo,
+  updateTodo,
+  deleteTodo,
 };
