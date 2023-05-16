@@ -23,10 +23,13 @@ const updateTodo = async (req, res) => {
 };
 
 const deleteTodo = async (req, res) => {
-  const { id } = req.params;
+  const { _id } = req.body;
+
+  console.log('id ---> ', _id);
+
   todoModel
-    .findByIdAndDelete(id)
-    .then(() => res.send("Delete Successfully"))
+    .findByIdAndDelete(_id)
+    .then(() => res.set(201).send("Deleted Successfully..."))
     .catch((err) => console.log(err));
 };
 

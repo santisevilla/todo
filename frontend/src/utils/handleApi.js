@@ -22,7 +22,7 @@ const addToDo = (text, setText, setToDo) => {
 
 const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
   axios
-    .put(`${baseUrl}/update`, { _id: toDoId, text })
+    .post(`${baseUrl}/update`, { _id: toDoId, text })
     .then((data) => {
       setText("");
       setIsUpdating(false);
@@ -33,7 +33,7 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
 
 const deleteToDo = (_id, setToDo) => {
   axios
-    .delete(`${baseUrl}/delete`, { _id })
+    .post(`${baseUrl}/delete`, { _id })
     .then((data) => {
       console.log(data);
       getAllToDo(setToDo);

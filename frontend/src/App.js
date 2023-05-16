@@ -25,7 +25,7 @@ function App() {
 
       <div className="container">
 
-        <h1>Todo App</h1>
+        <h1>ToDo App</h1>
 
         <div className="top">
           <input
@@ -47,11 +47,11 @@ function App() {
 
         <div className="list">
 
-          {toDo.map((item) => <ToDo 
-          key={item._id} 
-          text={item.text}
-          updateMode = {() => updateMode(item._id, item.text)}
-          deleteToDo = {() => deleteToDo(item._id, setToDo)} />)}
+          {toDo.map((item) => <ToDo
+            key={item._id}
+            text={item.text}
+            updateMode={() => updateMode(item._id, item.text)}
+            deleteToDo={() => deleteToDo(item._id, setToDo)} />)}
 
         </div>
 
